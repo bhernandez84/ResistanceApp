@@ -1,0 +1,9 @@
+C:\Projects\ResistanceApp\ResistanceApp.Tests\bin\Debug\ResistanceApp.Tests.dll
+C:\Projects\ResistanceApp\ResistanceApp.Tests\bin\Debug\ResistanceApp.Tests.pdb
+C:\Projects\ResistanceApp\ResistanceApp.Tests\bin\Debug\nunit.framework.dll
+C:\Projects\ResistanceApp\ResistanceApp.Tests\bin\Debug\ResistanceApp.Data.dll
+C:\Projects\ResistanceApp\ResistanceApp.Tests\bin\Debug\ResistanceApp.Data.pdb
+C:\Projects\ResistanceApp\ResistanceApp.Tests\bin\Debug\nunit.framework.xml
+C:\Projects\ResistanceApp\ResistanceApp.Tests\obj\Debug\ResistanceApp.Tests.csprojResolveAssemblyReference.cache
+C:\Projects\ResistanceApp\ResistanceApp.Tests\obj\Debug\ResistanceApp.Tests.dll
+C:\Projects\ResistanceApp\ResistanceApp.Tests\obj\Debug\ResistanceApp.Tests.pdb
