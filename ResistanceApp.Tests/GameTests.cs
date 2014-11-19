@@ -54,10 +54,13 @@ namespace ResistanceApp.Tests
         {
             ResistanceGame Game = new ResistanceGame(5);
             var currentPlayer = Game.Join("ben");
+            var player2 = Game.Join("ben2");
+
             Game.Play();
-            Game.CallForVote();
-            Game.Vote(currentPlayer, true);
-            Game.Vote(currentPlayer, false);
+            Game.PickMissionMembers("ben", new string[] { "ben", "ben2" });
+            
+            Game.Vote(currentPlayer.Name, true);
+            Game.Vote(currentPlayer.Name, false);
             Assert.AreEqual(Game.NumberOfVotes, 1);
             Assert.AreEqual(Game.GetVote("ben"), false);
         }
@@ -67,7 +70,7 @@ namespace ResistanceApp.Tests
         {
             ResistanceGame Game = new ResistanceGame(5);
             var currentPlayer = Game.Join("ben");
-            Game.Vote(currentPlayer, true);
+            Game.Vote(currentPlayer.Name, true);
         }
 
         [Test]
@@ -80,14 +83,12 @@ namespace ResistanceApp.Tests
             var player4 = Game.Join("ben4");
             var player5 = Game.Join("ben5");
 
-            Game.Play();
-            Game.CallForVote();
-
-            Game.Vote(player1, true);
-            Game.Vote(player2, true);
-            Game.Vote(player3, true);
-            Game.Vote(player4, true);
-            Game.Vote(player5, true);
+            Game.PickMissionMembers("ben", new string[] { "ben", "ben2" });
+            Game.Vote(player1.Name, true);
+            Game.Vote(player2.Name, true);
+            Game.Vote(player3.Name, true);
+            Game.Vote(player4.Name, true);
+            Game.Vote(player5.Name, true);
 
             Assert.AreEqual(Game.Status, GameStatus.OnMission);
 
@@ -103,18 +104,126 @@ namespace ResistanceApp.Tests
             var player4 = Game.Join("ben4");
             var player5 = Game.Join("ben5");
 
-            Game.Play();
-            Game.CallForVote();
+            var leader = Game.Leader;
+            Game.PickMissionMembers("ben", new string[] { "ben", "ben2" });            
 
-            Game.Vote(player1, true);
-            Game.Vote(player2, false);
-            Game.Vote(player3, false);
-            Game.Vote(player4, false);
-            Game.Vote(player5, true);
+            Game.Vote(player1.Name, true);
+            Game.Vote(player2.Name, false);
+            Game.Vote(player3.Name, false);
+            Game.Vote(player4.Name, false);
+            Game.Vote(player5.Name, true);
 
             Assert.AreEqual(Game.Status, GameStatus.MissionTeamSelection);
             Assert.AreEqual(Game.Leader, player2);
+            Assert.AreNotEqual(Game.Leader, leader);
         }
 
+        [Test]
+        public void IfNoPlayerSubmitsAnApprovedTeamGameIsOver()
+        {
+            ResistanceGame Game = new ResistanceGame(5);
+            var player1 = Game.Join("ben");
+            var player2 = Game.Join("ben2");
+            var player3 = Game.Join("ben3");
+            var player4 = Game.Join("ben4");
+            var player5 = Game.Join("ben5");
+
+            Game.PickMissionMembers("ben", new string[] { "ben", "ben2" });
+
+            Game.Vote(player1.Name, true);
+            Game.Vote(player2.Name, false);
+            Game.Vote(player3.Name, false);
+            Game.Vote(player4.Name, false);
+            Game.Vote(player5.Name, true);
+            Game.PickMissionMembers("ben2", new string[] { "ben", "ben2" });
+
+            Game.Vote(player1.Name, true);
+            Game.Vote(player2.Name, false);
+            Game.Vote(player3.Name, false);
+            Game.Vote(player4.Name, false);
+            Game.Vote(player5.Name, true);
+            Game.PickMissionMembers("ben3", new string[] { "ben", "ben2" });
+
+            Game.Vote(player1.Name, true);
+            Game.Vote(player2.Name, false);
+            Game.Vote(player3.Name, false);
+            Game.Vote(player4.Name, false);
+            Game.Vote(player5.Name, true);
+            Game.PickMissionMembers("ben4", new string[] { "ben", "ben2" });
+
+            Game.Vote(player1.Name, true);
+            Game.Vote(player2.Name, false);
+            Game.Vote(player3.Name, false);
+            Game.Vote(player4.Name, false);
+            Game.Vote(player5.Name, true);
+            Game.PickMissionMembers("ben5", new string[] { "ben", "ben2" });
+
+            Game.Vote(player1.Name, true);
+            Game.Vote(player2.Name, false);
+            Game.Vote(player3.Name, false);
+            Game.Vote(player4.Name, false);
+            Game.Vote(player5.Name, true);
+
+
+            Assert.AreEqual(Game.Status, GameStatus.Complete);
+        }
+
+        [Test]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void OnlyLeaderCanNominateMissionMembers()
+        {
+            ResistanceGame Game = new ResistanceGame(5);
+            var player1 = Game.Join("ben");
+            var player2 = Game.Join("ben2");
+            var player3 = Game.Join("ben3");
+            var player4 = Game.Join("ben4");
+            var player5 = Game.Join("ben5");
+
+            Game.PickMissionMembers("ben2", new string[] { "ben", "ben2" });
+            
+        }
+
+        [Test]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void NoDuplicatePeopleAllowedOnMissions()
+        {
+            ResistanceGame Game = new ResistanceGame(5);
+            var player1 = Game.Join("ben");
+            var player2 = Game.Join("ben2");
+            var player3 = Game.Join("ben3");
+            var player4 = Game.Join("ben4");
+            var player5 = Game.Join("ben5");
+
+            Game.PickMissionMembers("ben1", new string[] { "ben1", "ben1" });
+        }
+
+        [Test]
+        public void SpiesAreAssignedCorrectNumber()
+        {
+            ResistanceGame Game = new ResistanceGame(5);
+            var player1 = Game.Join("ben");
+            var player2 = Game.Join("ben2");
+            var player3 = Game.Join("ben3");
+            var player4 = Game.Join("ben4");
+            var player5 = Game.Join("ben5");
+
+            Assert.AreEqual(Game.NumberOfSpies, 2);
+        }
+        [Test]
+        public void SpiesCanSeeOtherSpies()
+        {
+            ResistanceGame Game = new ResistanceGame(5);
+            var player1 = Game.Join("ben");
+            var player2 = Game.Join("ben2");
+            var player3 = Game.Join("ben3");
+            var player4 = Game.Join("ben4");
+            var player5 = Game.Join("ben5");
+
+
+            if (player1.PlayerRole == Role.Spy)
+            {
+                Game.ShowSpies(player1);
+            }
+        }
     }
 }
