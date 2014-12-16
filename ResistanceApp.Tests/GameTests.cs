@@ -2,7 +2,8 @@
 using ResistanceApp.Data.Models;
 using ResistanceApp.Data.Models.Enum;
 using System;
-
+using System.Collections.Generic;
+using System.Linq;
 
 
 namespace ResistanceApp.Tests
@@ -214,16 +215,29 @@ namespace ResistanceApp.Tests
         {
             ResistanceGame Game = new ResistanceGame(5);
             var player1 = Game.Join("ben");
-            var player2 = Game.Join("ben2");
+            var player2 = Game.Join("ben2");    
             var player3 = Game.Join("ben3");
             var player4 = Game.Join("ben4");
             var player5 = Game.Join("ben5");
 
+            List<Player> AllPlayers = new System.Collections.Generic.List<Player>();
+            AllPlayers.Add(player1);
+            AllPlayers.Add(player2);
+            AllPlayers.Add(player3);
+            AllPlayers.Add(player4);
+            AllPlayers.Add(player5);
 
-            if (player1.PlayerRole == Role.Spy)
-            {
-                Game.ShowSpies(player1);
-            }
+            Player firstSpy = AllPlayers.FirstOrDefault(m => m.PlayerRole == Role.Spy);
+            Player firstResistance = AllPlayers.FirstOrDefault(m => m.PlayerRole == Role.Resistance);
+
+            var spies = Game.ShowSpies(firstSpy.Name);
+            var spiesForResistance = Game.ShowSpies(firstResistance.Name);
+
+            Assert.AreNotEqual(spies, spiesForResistance);
+            Assert.Greater(spies.Count(), spiesForResistance.Count());
+            Assert.AreEqual(spies.Count(), 2);
+           
+            
         }
     }
 }

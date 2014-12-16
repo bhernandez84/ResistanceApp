@@ -93,6 +93,15 @@ namespace ResistanceApp.Data.Models
         {
             Context.PickMissionMembers(sendingPlayer, missionMembers);
         }
+        public IEnumerable<Player> ViewPlayers(string sendingPlayer)
+        {
+            return Context.GetPlayers(sendingPlayer);
+        }
+        public List<Player> ShowSpies(string sendingPlayer)
+        {
+            var players = Context.GetPlayers(sendingPlayer);
+            return players.Where(m => m.PlayerRole == Role.Spy).ToList();
+        }
        
        
 

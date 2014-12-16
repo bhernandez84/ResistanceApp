@@ -161,6 +161,24 @@ namespace ResistanceApp.Data.Models
             return null;
         }
 
+        public IEnumerable<Player> GetPlayers(string playerName)
+        {
+            var currentPlayer = GetPlayer(playerName);
+            if (currentPlayer.PlayerRole == Role.Spy)
+            {
+                return GetListOfPlayersForSpies();
+            }
+            return GetListOfPlayersMaskRoles();
+        }
+        protected IEnumerable<Player> GetListOfPlayersForSpies()
+        {
+            return Players;
+        }
+        protected IEnumerable<Player> GetListOfPlayersMaskRoles()
+        {
+            var resistancePlayers = Players.Select(m => new Player() { Name = m.Name, PlayerRole = Role.Resistance });
+            return resistancePlayers;
+        }
 
         public bool GameFull
         {
