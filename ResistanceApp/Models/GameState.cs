@@ -181,10 +181,7 @@ namespace ResistanceApp.Data.Models
         }
     }
 
-    public class OnMissionState : GameState
-    {
-
-    }
+ 
 
     public class GameOverState : GameState {}
 }

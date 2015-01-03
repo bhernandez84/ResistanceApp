@@ -80,6 +80,7 @@ namespace ResistanceApp.Data.Models
             State = state;
             State.Init(this);
         }
+
         public GameContext(GameState state, int numPlayers)
         {
             State = state;
