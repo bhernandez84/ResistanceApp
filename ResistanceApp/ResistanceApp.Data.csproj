@@ -43,10 +43,14 @@
     <Compile Include="Models\Enum\GameStatus.cs" />
     <Compile Include="Models\Enum\Role.cs" />
     <Compile Include="Models\GameContext.cs" />
+    <Compile Include="Models\GameOverState.cs" />
     <Compile Include="Models\GameState.cs" />
+    <Compile Include="Models\MissionNominatingState.cs" />
+    <Compile Include="Models\MissionVotingState.cs" />
     <Compile Include="Models\OnMissionState.cs" />
     <Compile Include="Models\ResistanceGame.cs" />
     <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\SetupState.cs" />
     <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

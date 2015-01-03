@@ -1,4 +1,5 @@
-﻿using System;
+﻿﻿using ResistanceApp.Data.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace ResistanceApp.Data.Models
 {
     public class OnMissionState : GameState
     {
+
         public override void Init(GameContext context)
         {
             context.Votes = new List<Vote>();
