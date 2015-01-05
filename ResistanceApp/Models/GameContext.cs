@@ -36,6 +36,9 @@ namespace ResistanceApp.Data.Models
             }
         }
 
+        public Score Points
+        { get; set; }
+
         public Player GetLeader
         {
             get
@@ -86,6 +89,7 @@ namespace ResistanceApp.Data.Models
             State = state;
             MaxPlayers = numPlayers;
             Leader = -1;
+            Points = new Score();
         }
         public Player Join(string playername)
         {
@@ -189,6 +193,16 @@ namespace ResistanceApp.Data.Models
             }
         }
 
+        public void ResolveMissionVote(){
+            if (Votes.Any(m => m.PlayerVote == false))
+            {
+                Points.Spies++;
+            }
+            else
+            {
+                Points.Resistance++;
+            }
+        }
 
     }
 }

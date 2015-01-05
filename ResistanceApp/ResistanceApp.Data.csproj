@@ -50,6 +50,7 @@
     <Compile Include="Models\OnMissionState.cs" />
     <Compile Include="Models\ResistanceGame.cs" />
     <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\Score.cs" />
     <Compile Include="Models\SetupState.cs" />
     <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

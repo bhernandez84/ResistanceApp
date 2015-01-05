@@ -55,7 +55,11 @@ namespace ResistanceApp.Data.Models
         {
             get { return Context.GetLeader; }
         }
-        
+
+        public Score Points
+        {
+            get { return Context.Points; }
+        }
         #region Constructors
 
         public ResistanceGame(GameState state) {

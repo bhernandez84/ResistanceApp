@@ -21,6 +21,7 @@ namespace ResistanceApp.Data.Models
                 context.AddVote(new Vote(player, vote));
                 if (context.Votes.Count() == context.MissionMembers.Count())
                 {
+                    context.ResolveMissionVote();
                     context.SetState(new GameOverState());
                 }
             }
