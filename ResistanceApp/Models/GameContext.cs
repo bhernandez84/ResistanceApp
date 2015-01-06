@@ -9,11 +9,91 @@ namespace ResistanceApp.Data.Models
 {
     public class GameContext
     {
-        public List<Player> Players;
-        public List<Player> MissionMembers;
-        public List<Vote> Votes;
+        #region Game Data
+
+        public Player Join(string playername)
+        {
+            return CurrentState.Join(this, playername);
+        }
+
+        public int Round
+        {
+            get
+            {
+                return Points.Resistance + Points.Spies;
+            }
+        }
+
+        public Score Points
+        { get; set; }
+
+        public void Start()
+        {
+            SetState(new MissionNominatingState());
+        }
+
         public int MaxPlayers;
-        public int Leader { get; private set; }
+
+        public bool GameFull
+        {
+            get
+            {
+                return MaxPlayers == NumberOfPlayers;
+            }
+        }
+
+        private GameState CurrentState;
+
+        public GameStatus Status
+        {
+            get
+            {
+                if (CurrentState is OnMissionState)
+                {
+                    return GameStatus.OnMission;
+                }
+                if (CurrentState is SetupState)
+                {
+                    return GameStatus.Starting;
+                }
+                if (CurrentState is MissionNominatingState)
+                {
+                    return GameStatus.MissionTeamSelection;
+                }
+                if (CurrentState is MissionVotingState)
+                {
+                    return GameStatus.Voting;
+                }
+                if (CurrentState is GameOverState)
+                {
+                    return GameStatus.Complete;
+                }
+
+                return GameStatus.Starting;
+            }
+
+        }
+
+        public void SetState(GameState state)
+        {
+            CurrentState = state;
+            CurrentState.Init(this);
+        }
+
+        public GameContext(GameState state, int numPlayers)
+        {
+            CurrentState = state;
+            MaxPlayers = numPlayers;
+            Leader = -1;
+            Points = new Score();
+        }
+
+        #endregion
+
+        #region Player Info
+
+        public List<Player> Players;
+
         public int NumberOfPlayers
         {
             get
@@ -28,72 +108,13 @@ namespace ResistanceApp.Data.Models
                 }
             }
         }
+
         public int NumberOfSpies
         {
             get
             {
                 return Players.Count(m => m.PlayerRole == Role.Spy);
             }
-        }
-
-        public Score Points
-        { get; set; }
-
-        public Player GetLeader
-        {
-            get
-            {
-                return Players[Leader];
-            }
-        }
-        private GameState State;
-
-        public GameStatus Status
-        {
-            get
-            {
-                if (State is OnMissionState)
-                {
-                    return GameStatus.OnMission;
-                }
-                if (State is SetupState)
-                {
-                    return GameStatus.Starting;
-                }
-                if (State is MissionNominatingState)
-                {
-                    return GameStatus.MissionTeamSelection;
-                }
-                if (State is MissionVotingState)
-                {
-                    return GameStatus.Voting;
-                }
-                if (State is GameOverState)
-                {
-                    return GameStatus.Complete;
-                }
-
-                return GameStatus.Starting;
-            }
-
-        }
-
-        public void SetState(GameState state)
-        {
-            State = state;
-            State.Init(this);
-        }
-
-        public GameContext(GameState state, int numPlayers)
-        {
-            State = state;
-            MaxPlayers = numPlayers;
-            Leader = -1;
-            Points = new Score();
-        }
-        public Player Join(string playername)
-        {
-            return State.Join(this, playername);
         }
 
         public void AddPlayer(Player player)
@@ -104,66 +125,12 @@ namespace ResistanceApp.Data.Models
             {
                 throw new InvalidOperationException("Sorry, that name has been taken. Please select another.");
             }
-            SetRole(player);
             Players.Add(player);
         }
-        public void SetRole(Player player)
-        {
 
-        }
-        public void PickMissionMembers(string playerName, string[] missionMembers)
-        {
-            State.PickMissionMembers(this, missionMembers, playerName);
-        }
-        public void AddMissionMember(Player player)
-        {
-            if (MissionMembers == null)
-                MissionMembers = new List<Player>();
-            MissionMembers.Add(player);
-        }
         public Player GetPlayer(string playerName)
         {
             return Players.FirstOrDefault(m => m.Name == playerName);
-        }
-
-        public void ChooseLeader()
-        {
-            if (Leader == (NumberOfPlayers - 1))
-            {
-                Leader = 0;
-            }
-            else
-                Leader++;
-        }
-
-        public bool IsLeader(Player player)
-        {
-            return (Players.IndexOf(player) == Leader);
-        }
-
-
-        public void Vote(string playername, bool vote)
-        {
-            Player player = GetPlayer(playername);
-            State.Vote(this, player, vote);
-        }
-
-        public void AddVote(Vote vote)
-        {
-            Votes.Add(vote);
-        }
-        public bool HasPlayerVoted(string playerName)
-        {
-            return Votes.Any(m => m.Player.Name == playerName);
-        }
-
-        public bool? GetVote(string playerName)
-        {
-            if (HasPlayerVoted(playerName))
-            {
-                return Votes.FirstOrDefault(m => m.Player.Name == playerName).PlayerVote;
-            }
-            return null;
         }
 
         public IEnumerable<Player> GetPlayers(string playerName)
@@ -185,15 +152,86 @@ namespace ResistanceApp.Data.Models
             return resistancePlayers;
         }
 
-        public bool GameFull
+        #endregion
+
+        #region Leader
+
+        public int Leader { get; private set; }
+
+
+        public Player GetLeader
         {
             get
             {
-                return MaxPlayers == NumberOfPlayers;
+                return Players[Leader];
             }
         }
 
-        public void ResolveMissionVote(){
+        public void ChooseLeader()
+        {
+            if (Leader == (NumberOfPlayers - 1))
+            {
+                Leader = 0;
+            }
+            else
+                Leader++;
+        }
+
+        public bool IsLeader(Player player)
+        {
+            return (Players.IndexOf(player) == Leader);
+        }
+
+        #endregion
+
+        #region Mission info
+
+        public List<Player> MissionMembers;
+
+        public void PickMissionMembers(string playerName, string[] missionMembers)
+        {
+            CurrentState.PickMissionMembers(this, missionMembers, playerName);
+        }
+
+        public void AddMissionMember(Player player)
+        {
+            if (MissionMembers == null)
+                MissionMembers = new List<Player>();
+            MissionMembers.Add(player);
+        }
+
+        #endregion
+
+        #region Votes
+        public List<Vote> Votes;
+
+        public bool HasPlayerVoted(string playerName)
+        {
+            return Votes.Any(m => m.Player.Name == playerName);
+        }
+
+        public bool? GetVote(string playerName)
+        {
+            if (HasPlayerVoted(playerName))
+            {
+                return Votes.FirstOrDefault(m => m.Player.Name == playerName).PlayerVote;
+            }
+            return null;
+        }
+
+        public void Vote(string playername, bool vote)
+        {
+            Player player = GetPlayer(playername);
+            CurrentState.Vote(this, player, vote);
+        }
+
+        public void AddVote(Vote vote)
+        {
+            Votes.Add(vote);
+        }
+
+        public void ResolveMissionVote()
+        {
             if (Votes.Any(m => m.PlayerVote == false))
             {
                 Points.Spies++;
@@ -204,5 +242,6 @@ namespace ResistanceApp.Data.Models
             }
         }
 
+        #endregion
     }
 }

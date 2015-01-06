@@ -334,32 +334,31 @@ namespace ResistanceApp.Tests
 
             Assert.AreEqual(Game.Points.Resistance, 1);
         }
-        //[Test]
-        //public void GameEndsWhenSpiesWinMajorityOfRounds()
-        //{
-        //    ResistanceGame Game = new ResistanceGame(5);
-        //    var player1 = Game.Join("ben");
-        //    var player2 = Game.Join("ben2");
-        //    var player3 = Game.Join("ben3");
-        //    var player4 = Game.Join("ben4");
-        //    var player5 = Game.Join("ben5");
 
-            
-        //    List<Player> AllPlayers = new System.Collections.Generic.List<Player>();
-        //    AllPlayers.Add(player1);
-        //    AllPlayers.Add(player2);
-        //    AllPlayers.Add(player3);
-        //    AllPlayers.Add(player4);
-        //    AllPlayers.Add(player5);
+       [Test]
+        public void NewRoundStartsAfterVotesAreIn()
+        {
+            ResistanceGame Game = new ResistanceGame(5);
+            var player1 = Game.Join("ben");
+            var player2 = Game.Join("ben2");
+            var player3 = Game.Join("ben3");
+            var player4 = Game.Join("ben4");
+            var player5 = Game.Join("ben5");
 
-        //    var spies = AllPlayers.Where(m => m.PlayerRole == Role.Spy);
+            Game.PickMissionMembers("ben", new string[] { "ben", "ben2" });
+            Game.Vote(player1.Name, true);
+            Game.Vote(player2.Name, true);
+            Game.Vote(player3.Name, true);
+            Game.Vote(player4.Name, true);
+            Game.Vote(player5.Name, true);
 
-        //    var spy1 = spies.First();
-        //    var spy2 = spies.Last();
+            int currentRound = Game.Round;
 
+            Game.Vote(player1.Name, true);
+            Game.Vote(player2.Name, true);
 
-            
-        //}
+            Assert.AreEqual(Game.Round, currentRound+1);
+        }
         
     }
 }

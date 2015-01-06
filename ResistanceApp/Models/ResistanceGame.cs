@@ -42,6 +42,9 @@ namespace ResistanceApp.Data.Models
             }
         }
 
+        public int Round
+        { get { return Context.Round; } }
+
         public bool? GetVote(string playerName)
         {
             return Context.GetVote(playerName);
@@ -80,7 +83,7 @@ namespace ResistanceApp.Data.Models
 
         public void Play()
         {
-            Context.SetState(new MissionNominatingState());
+            Context.Start();
         }
 
         public Player Join(string playername)

@@ -9,6 +9,7 @@ namespace ResistanceApp.Data.Models
 {
     public abstract class GameState
     {
+
         public virtual void Init(GameContext context)
         {
 
