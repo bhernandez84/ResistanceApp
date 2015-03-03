@@ -1,0 +1,6 @@
+C:\Projects\ResistanceApp\ProjectEuler\bin\Debug\ProjectEuler.exe.config
+C:\Projects\ResistanceApp\ProjectEuler\bin\Debug\ProjectEuler.exe
+C:\Projects\ResistanceApp\ProjectEuler\bin\Debug\ProjectEuler.pdb
+C:\Projects\ResistanceApp\ProjectEuler\obj\Debug\ProjectEuler.csprojResolveAssemblyReference.cache
+C:\Projects\ResistanceApp\ProjectEuler\obj\Debug\ProjectEuler.exe
+C:\Projects\ResistanceApp\ProjectEuler\obj\Debug\ProjectEuler.pdb

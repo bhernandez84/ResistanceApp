@@ -67,15 +67,16 @@
   <ItemGroup>
     <Compile Include="GameTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ResistanceApp\ResistanceApp.Data.csproj">
-      <Project>{92509c42-895e-4410-9e77-831515026c91}</Project>
-      <Name>ResistanceApp.Data</Name>
-    </ProjectReference>
+    <Compile Include="RepositoryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ResistanceApp.Data\ResistanceApp.Data.csproj">
+      <Project>{92509c42-895e-4410-9e77-831515026c91}</Project>
+      <Name>ResistanceApp.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

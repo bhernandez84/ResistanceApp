@@ -1,0 +1,10 @@
+C:\Projects\ResistanceApp\ResistanceApp\bin\Debug\ResistanceApp.Data.dll
+C:\Projects\ResistanceApp\ResistanceApp\bin\Debug\ResistanceApp.Data.pdb
+C:\Projects\ResistanceApp\ResistanceApp\obj\Debug\ResistanceApp.Data.csprojResolveAssemblyReference.cache
+C:\Projects\ResistanceApp\ResistanceApp\obj\Debug\ResistanceApp.Data.dll
+C:\Projects\ResistanceApp\ResistanceApp\obj\Debug\ResistanceApp.Data.pdb
+C:\Projects\ResistanceApp\ResistanceApp.Data\bin\Debug\ResistanceApp.Data.dll
+C:\Projects\ResistanceApp\ResistanceApp.Data\bin\Debug\ResistanceApp.Data.pdb
+C:\Projects\ResistanceApp\ResistanceApp.Data\obj\Debug\ResistanceApp.Data.csprojResolveAssemblyReference.cache
+C:\Projects\ResistanceApp\ResistanceApp.Data\obj\Debug\ResistanceApp.Data.dll
+C:\Projects\ResistanceApp\ResistanceApp.Data\obj\Debug\ResistanceApp.Data.pdb

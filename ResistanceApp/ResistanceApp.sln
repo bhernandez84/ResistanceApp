@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResistanceApp.Data", "ResistanceApp.Data.csproj", "{92509C42-895E-4410-9E77-831515026C91}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResistanceApp.Tests", "..\ResistanceApp.Tests\ResistanceApp.Tests.csproj", "{55B628A8-31FA-4665-BD71-864799F4DDE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResistanceApp", "ResistanceApp.csproj", "{1D33CB76-E05F-45E9-AD97-61C5BC684294}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResistanceApp.Data", "..\ResistanceApp.Data\ResistanceApp.Data.csproj", "{92509C42-895E-4410-9E77-831515026C91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{92509C42-895E-4410-9E77-831515026C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92509C42-895E-4410-9E77-831515026C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92509C42-895E-4410-9E77-831515026C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92509C42-895E-4410-9E77-831515026C91}.Release|Any CPU.Build.0 = Release|Any CPU
 		{55B628A8-31FA-4665-BD71-864799F4DDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{55B628A8-31FA-4665-BD71-864799F4DDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55B628A8-31FA-4665-BD71-864799F4DDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55B628A8-31FA-4665-BD71-864799F4DDE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D33CB76-E05F-45E9-AD97-61C5BC684294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D33CB76-E05F-45E9-AD97-61C5BC684294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D33CB76-E05F-45E9-AD97-61C5BC684294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D33CB76-E05F-45E9-AD97-61C5BC684294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92509C42-895E-4410-9E77-831515026C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92509C42-895E-4410-9E77-831515026C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92509C42-895E-4410-9E77-831515026C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92509C42-895E-4410-9E77-831515026C91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
