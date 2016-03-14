@@ -29,5 +29,75 @@ namespace ResistanceApp.Data.Helpers
             }
             return 0;
         }
+
+        public static int GetNumberOfPlayersForMission(int numberOfPlayers, int roundNumber)
+        {
+            switch (numberOfPlayers)
+            {
+                case 5:
+                    switch (roundNumber)
+                    {
+                        case 0:
+                            return 2;
+                        case 1:
+                            return 3;
+                        case 2:
+                            return 2;
+                        case 3:
+                            return 3;
+                        case 4:
+                            return 3;
+                        default:
+                            return 0;
+                    }
+                case 6:
+                    switch (roundNumber)
+                    {
+                        case 0:
+                            return 2;
+                        case 1:
+                        case 2:
+                        case 3:
+                            return 3;
+                        case 4:
+                            return 4;
+                        default:
+                            return 0;
+                    }
+                case 7:
+                    switch (roundNumber)
+                    {
+                        case 0:
+                            return 2;
+                        case 1:
+                        case 2:
+                            return 3;
+                        case 3:
+                        case 4:
+                            return 4;
+                        default:
+                            return 0;
+                    }
+                case 8:
+                case 9:
+                case 10:
+                    switch (roundNumber)
+                    {
+                        case 0:
+                            return 3;
+                        case 1:
+                        case 2:
+                            return 4;
+                        case 3:
+                        case 4:
+                            return 5;
+                        default:
+                            return 0;
+                    }
+                default:
+                    return 0;
+            }
+
+        }
     }
 }
