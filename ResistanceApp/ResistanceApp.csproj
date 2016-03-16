@@ -80,7 +80,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\loading.gif" />
     <Content Include="Global.asax" />
+    <Content Include="index.css" />
+    <Content Include="index.html" />
+    <Content Include="index.js" />
+    <Content Include="ResistanceGameAPI.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
