@@ -80,7 +80,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\ally1.jpg" />
+    <Content Include="Assets\ally2.jpg" />
+    <Content Include="Assets\ally3.jpg" />
+    <Content Include="Assets\ally4.jpg" />
+    <Content Include="Assets\ally5.jpg" />
+    <Content Include="Assets\ally6.jpg" />
+    <Content Include="Assets\characterBack.jpg" />
     <Content Include="Assets\loading.gif" />
+    <Content Include="Assets\spy1.jpg" />
+    <Content Include="Assets\spy2.jpg" />
+    <Content Include="Assets\spy3.jpg" />
+    <Content Include="Assets\spy4.jpg" />
     <Content Include="Global.asax" />
     <Content Include="index.css" />
     <Content Include="index.html" />
