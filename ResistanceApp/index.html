@@ -4,6 +4,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="index.js"></script>
     <script src="ResistanceGameAPI.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="index.css"/>
     <title>The Resistance Game</title>
 </head>
@@ -27,14 +29,28 @@
     </div>
 
     <!--User Card View-->
-    <div id="user-card">
-
+    <button type="button" onclick="" class="btn btn-info btn-lg" data-toggle="modal" data-target="#usercardModal">Show Role Card</button>
+    <div id="usercardModal" class="modalWindow fade" role="dialog">
+        <a data-dismiss="modal" id="card-image"></a>
     </div>
 
     <!--List Of Players-->
     <div id="listOfPlayers">
         <button onclick="viewPlayers()">View Players</button>
         <ul id='players-list' style="display: none"></ul>
+    </div>
+
+    <!--Lock Screen-->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#lockscreenModal">Lock Screen</button>
+    <div id="lockscreenModal" class="modalWindow fade" role="dialog">
+        <a data-dismiss="modal">
+            <img src="Assets/characterBack.jpg" />
+        </a>
+    </div>
+
+    <!--Game Board-->
+    <div>
+    
     </div>
 </body>
 </html>
