@@ -14,7 +14,6 @@ function handleJoinSubmit(event) {
     event.preventDefault();
     var gamePicked = document.querySelector('input[name="gamePicked"]:checked') ? document.querySelector('input[name="gamePicked"]:checked').value : "";
     var userName = document.getElementById('name-input').value;
-    console.log(gamePicked, userName);
     if ((gamePicked === 'newGame' || gamePicked === "") && (userName !== null || userName !== "")) {
         this.gameModel = resistanceGameAPI.createGame(userName);
     }
@@ -23,6 +22,7 @@ function handleJoinSubmit(event) {
         this.gameModel = resistanceGameAPI.getGameById(gamePicked);
     }
     populatePlayersList();
+    getUserCard();
 }
 
 function getGames() {
@@ -38,6 +38,7 @@ function populatePlayersList() {
     var isCurrentPlayerSpy = this.userModel.playerRole === 'spy';
     var $playerList = $('#players-list');
     $playerList.empty();
+    console.log(listOfPlayerModels);
 
     if (isCurrentPlayerSpy) {
         listOfPlayerModels.forEach(function (user) {
@@ -58,3 +59,7 @@ function viewPlayers() {
     $('#players-list').toggle();
 }
 
+function getUserCard() {
+    var $userCard = $('#card-image');
+    $userCard.append('<img src=' + this.userModel.cardUrl + '>');
+}
