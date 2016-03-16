@@ -14,7 +14,8 @@ var resistanceGameAPI = {
                     leader: {
                         userName: 'leader',
                         playerRole: 'resistance',
-                        gameId: 'abcd1234'
+                        gameId: 'abcd1234',
+                        cardUrl: '/Assets/ally2.jpg'
                     },
                     points: {
                         spies: 0,
@@ -24,27 +25,32 @@ var resistanceGameAPI = {
                         {
                             userName: "leader",
                             playerRole: "spy",
-                            gameId: "abcd1234"
+                            gameId: "abcd1234",
+                            cardUrl: '/Assets/spy1.jpg'
                         },
                         {
                             userName: "justin",
                             playerRole: "spy",
-                            gameId: "abcd1234"
+                            gameId: "abcd1234",
+                            cardUrl: '/Assets/spy2.jpg'
                         },
                         {
                             userName: "ben",
                             playerRole: "resistance",
-                            gameId: "abcd1234"
+                            gameId: "abcd1234",
+                            cardUrl: '/Assets/ally3.jpg'
                         },
                         {
                             userName: "felix",
                             playerRole: "resistance",
-                            gameId: "abcd1234"
+                            gameId: "abcd1234",
+                            cardUrl: '/Assets/ally4.jpg'
                         },
                         {
                             userName: "penny",
                             playerRole: "resistance",
-                            gameId: "abcd1234"
+                            gameId: "abcd1234",
+                            cardUrl: '/Assets/ally5.jpg'
                         }
                     ],
 
@@ -62,7 +68,8 @@ var resistanceGameAPI = {
                     leader: {
                         userName: 'leader',
                         playerRole: 'resistance',
-                        gameId: 'efgh5678'
+                        gameId: 'efgh5678',
+                        cardUrl: '/Assets/ally2.jpg'
                     },
                     points: {
                         spies: 0,
@@ -72,41 +79,49 @@ var resistanceGameAPI = {
                         {
                             userName: "leader",
                             playerRole: "spy",
-                            gameId: "abcd1234"
+                            gameId: "abcd1234",
+                            cardUrl: '/Assets/spy1.jpg'
                         },
                         {
                             userName: "justin",
                             playerRole: "spy",
-                            gameId: "abcd1234"
+                            gameId: "abcd1234",
+                            cardUrl: '/Assets/spy2.jpg'
                         },
                         {
                             userName: "ben",
                             playerRole: "spy",
-                            gameId: "abcd1234"
+                            gameId: "abcd1234",
+                            cardUrl: '/Assets/spy3.jpg'
                         },
                         {
                             userName: "felix",
                             playerRole: "resistance",
-                            gameId: "abcd1234"
+                            gameId: "abcd1234",
+                            cardUrl: '/Assets/ally3.jpg'
                         },
                         {
                             userName: "penny",
                             playerRole: "resistance",
-                            gameId: "abcd1234"
+                            gameId: "abcd1234",
+                            cardUrl: '/Assets/ally4.jpg'
                         },
                         {
                             userName: "jake",
                             playerRole: "resistance",
-                            gameId: "abcd1234"
+                            gameId: "abcd1234",
+                            cardUrl: '/Assets/ally5.jpg'
                         },
                         {
                             userName: "stephen",
                             playerRole: "resistance",
-                            gameId: "abcd1234"
+                            gameId: "abcd1234",
+                            cardUrl: '/Assets/ally6.jpg'
                         }, {
                             userName: "colin",
                             playerRole: "resistance",
-                            gameId: "abcd1234"
+                            gameId: "abcd1234",
+                            cardUrl: '/Assets/ally1.jpg'
                         }
                     ],
 
@@ -137,7 +152,8 @@ var resistanceGameAPI = {
             return {
                 userName: playerName,
                 playerRole: "resistance",
-                gameId: gameId
+                gameId: gameId,
+                cardUrl: '/Assets/ally1.jpg'
             }
         } else {
             $.ajax({
