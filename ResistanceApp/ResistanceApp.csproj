@@ -85,7 +85,6 @@
     <Content Include="index.css" />
     <Content Include="index.html" />
     <Content Include="index.js" />
-    <Content Include="PlayerModel.js" />
     <Content Include="ResistanceGameAPI.js" />
     <Content Include="Web.config" />
   </ItemGroup>
