@@ -86,12 +86,16 @@
     <Content Include="Assets\ally4.jpg" />
     <Content Include="Assets\ally5.jpg" />
     <Content Include="Assets\ally6.jpg" />
+    <Content Include="Assets\blue-circle.png" />
     <Content Include="Assets\characterBack.jpg" />
+    <Content Include="Assets\empty-circle.png" />
     <Content Include="Assets\loading.gif" />
+    <Content Include="Assets\red-circle.png" />
     <Content Include="Assets\spy1.jpg" />
     <Content Include="Assets\spy2.jpg" />
     <Content Include="Assets\spy3.jpg" />
     <Content Include="Assets\spy4.jpg" />
+    <Content Include="Assets\verticalGameboard.jpg" />
     <Content Include="Global.asax" />
     <Content Include="index.css" />
     <Content Include="index.html" />
