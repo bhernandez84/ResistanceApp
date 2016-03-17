@@ -12,6 +12,9 @@ namespace ResistanceApp.Data.Models
         protected int LeaderProposalCounter
         { get; set; }
 
+        public int NumberOfMembersForMission
+        { get; set; }
+
         public override void PickMissionMembers(GameContext context, string[] playerNames, string sendingPlayer)
         {
             Player currentPlayer = context.GetPlayer(sendingPlayer);
@@ -21,6 +24,10 @@ namespace ResistanceApp.Data.Models
             }
             else
             {
+                if (playerNames.Length != NumberOfMembersForMission)
+                {
+                    throw new InvalidOperationException("Incorrect number of members nominated for this mission");
+                }
                 foreach (var player in playerNames)
                 {
                     Player missionPlayer = context.GetPlayer(player);
@@ -37,12 +44,12 @@ namespace ResistanceApp.Data.Models
         public override void Init(GameContext context)
         {
             context.ChooseLeader();
+            NumberOfMembersForMission = PlayerHelpers.GetNumberOfPlayersForMission(context.NumberOfPlayers,
+                context.Round);
         }
         public MissionNominatingState(int leaderCounter = 1)
         {
             LeaderProposalCounter = leaderCounter;
         }
-
-
     }
 }
