@@ -23,6 +23,7 @@ function handleJoinSubmit(event) {
     }
     populatePlayersList();
     getUserCard();
+    updateScoreboard();
 }
 
 function getGames() {
@@ -38,7 +39,6 @@ function populatePlayersList() {
     var isCurrentPlayerSpy = this.userModel.playerRole === 'spy';
     var $playerList = $('#players-list');
     $playerList.empty();
-    console.log(listOfPlayerModels);
 
     if (isCurrentPlayerSpy) {
         listOfPlayerModels.forEach(function (user) {
@@ -62,4 +62,21 @@ function viewPlayers() {
 function getUserCard() {
     var $userCard = $('#card-image');
     $userCard.append('<img src=' + this.userModel.cardUrl + '>');
+}
+
+function updateScoreboard() {
+    var $listOfRounds = $('#rounds');
+    var missionResults = this.gameModel.missionOutcomes;
+    missionResults.forEach(function(value) {
+        console.log(value);
+        if (value === 1) {
+            //1 = resistance won
+            $listOfRounds.append('<li><img src="/Assets/blue-circle.png"></li>');
+        } else if (value === 2) {
+            //2 = spies won
+            $listOfRounds.append('<li><img src="/Assets/red-circle.png"></li>');
+        } else {
+            $listOfRounds.append('<li><img src="/Assets/empty-circle.png"></li>');
+        }
+    });
 }
