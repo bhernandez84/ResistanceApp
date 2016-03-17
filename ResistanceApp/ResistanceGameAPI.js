@@ -10,13 +10,14 @@ var resistanceGameAPI = {
                 numberOfPlayers: 5,
                 numberOfVotes: 0,
                 round: 0,
+                playersNeededForMission: 2,
                 missionOutcomes: [
                     1,2,2,1,0
                 ],
-                status: 'SetupState',
+                status: 'MissionNominatingState',
                 leader: {
                     userName: 'leader',
-                    playerRole: 'resistance',
+                    playerRole: 'spy',
                     gameId: 'abcd1234',
                     cardUrl: '/Assets/ally2.jpg'
                 },
@@ -67,75 +68,76 @@ var resistanceGameAPI = {
                 numberOfPlayers: 8,
                 numberOfVotes: 0,
                 round: 0,
-                missionOutcomes: [
-                    0, 0, 0, 0, 0
-                    ],
-                    status: 'SetupState',
-                    leader: {
-                        userName: 'leader',
-                        playerRole: 'resistance',
-                        gameId: 'efgh5678',
-                        cardUrl: '/Assets/ally2.jpg'
-                    },
-                    points: {
-                        spies: 0,
-                        resistance: 0
-                    },
-                    listOfPlayers: [
-                        {
-                            userName: "leader",
-                            playerRole: "spy",
-                            gameId: "abcd1234",
-                            cardUrl: '/Assets/spy1.jpg'
-                        },
-                        {
-                            userName: "justin",
-                            playerRole: "spy",
-                            gameId: "abcd1234",
-                            cardUrl: '/Assets/spy2.jpg'
-                        },
-                        {
-                            userName: "ben",
-                            playerRole: "spy",
-                            gameId: "abcd1234",
-                            cardUrl: '/Assets/spy3.jpg'
-                        },
-                        {
-                            userName: "felix",
-                            playerRole: "resistance",
-                            gameId: "abcd1234",
-                            cardUrl: '/Assets/ally3.jpg'
-                        },
-                        {
-                            userName: "penny",
-                            playerRole: "resistance",
-                            gameId: "abcd1234",
-                            cardUrl: '/Assets/ally4.jpg'
-                        },
-                        {
-                            userName: "jake",
-                            playerRole: "resistance",
-                            gameId: "abcd1234",
-                            cardUrl: '/Assets/ally5.jpg'
-                        },
-                        {
-                            userName: "stephen",
-                            playerRole: "resistance",
-                            gameId: "abcd1234",
-                            cardUrl: '/Assets/ally6.jpg'
-                        }, {
-                            userName: "colin",
-                            playerRole: "resistance",
-                            gameId: "abcd1234",
-                            cardUrl: '/Assets/ally1.jpg'
-                        }
-                    ],
 
-                    getVote: function(playerName) {
-                        return null;
+                missionOutcomes: [
+                0, 0, 0, 0, 0
+                ],
+                status: 'SetupState',
+                leader: {
+                    userName: 'leader',
+                    playerRole: 'resistance',
+                    gameId: 'efgh5678',
+                    cardUrl: '/Assets/ally2.jpg'
+                },
+                points: {
+                    spies: 0,
+                    resistance: 0
+                },
+                listOfPlayers: [
+                    {
+                        userName: "leader",
+                        playerRole: "spy",
+                        gameId: "abcd1234",
+                        cardUrl: '/Assets/spy1.jpg'
+                    },
+                    {
+                        userName: "justin",
+                        playerRole: "spy",
+                        gameId: "abcd1234",
+                        cardUrl: '/Assets/spy2.jpg'
+                    },
+                    {
+                        userName: "ben",
+                        playerRole: "spy",
+                        gameId: "abcd1234",
+                        cardUrl: '/Assets/spy3.jpg'
+                    },
+                    {
+                        userName: "felix",
+                        playerRole: "resistance",
+                        gameId: "abcd1234",
+                        cardUrl: '/Assets/ally3.jpg'
+                    },
+                    {
+                        userName: "penny",
+                        playerRole: "resistance",
+                        gameId: "abcd1234",
+                        cardUrl: '/Assets/ally4.jpg'
+                    },
+                    {
+                        userName: "jake",
+                        playerRole: "resistance",
+                        gameId: "abcd1234",
+                        cardUrl: '/Assets/ally5.jpg'
+                    },
+                    {
+                        userName: "stephen",
+                        playerRole: "resistance",
+                        gameId: "abcd1234",
+                        cardUrl: '/Assets/ally6.jpg'
+                    }, {
+                        userName: "colin",
+                        playerRole: "resistance",
+                        gameId: "abcd1234",
+                        cardUrl: '/Assets/ally1.jpg'
                     }
+                ],
+
+                getVote: function(playerName) {
+                    return null;
                 }
-            ];
+            }
+        ];
         } else {
             $.ajax({
                 url: "",
@@ -157,7 +159,7 @@ var resistanceGameAPI = {
         if (useMockData) {
             return {
                 userName: playerName,
-                playerRole: "resistance",
+                playerRole: "spy",
                 gameId: gameId,
                 cardUrl: '/Assets/ally1.jpg'
             }
