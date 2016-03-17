@@ -37,22 +37,29 @@ function getGames() {
 function populatePlayersList() {
     var listOfPlayerModels = this.gameModel.listOfPlayers;
     var isCurrentPlayerSpy = this.userModel.playerRole === 'spy';
+    var isNominatingRound = this.gameModel.status === 'MissionNominatingState';
+    var isCurrentPlayerLeader = this.gameModel.leader.userName === this.userModel.userName;
     var $playerList = $('#players-list');
     $playerList.empty();
 
-    if (isCurrentPlayerSpy) {
-        listOfPlayerModels.forEach(function (user) {
-            if (user.playerRole === 'spy') {
-                $playerList.append('<li style="color: #FF0000">' + user.userName + '</li>');
-            } else {
-                $playerList.append('<li>' + user.userName + '</li>');
-            }
-        });
-    } else {
-        listOfPlayerModels.forEach(function(user) {
-            $playerList.append('<li>' + user.userName + '</li>');
-        });
-    }
+    listOfPlayerModels.forEach(function (user) {
+        var text = document.createTextNode(user.userName);
+        var playerToAppend = document.createElement('li');
+
+        if (user.playerRole === 'spy' && isCurrentPlayerSpy) {
+            playerToAppend.style = 'color: #FF0000';   
+        }
+        playerToAppend.appendChild(text);
+
+        if (isCurrentPlayerLeader && isNominatingRound) {
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.name = 'nominate';
+            checkbox.value = user.userName;
+            playerToAppend.appendChild(checkbox);
+        }
+        $playerList.append(playerToAppend);
+    });
 }
 
 function viewPlayers() {
@@ -66,6 +73,7 @@ function getUserCard() {
 
 function updateScoreboard() {
     var $listOfRounds = $('#rounds');
+    $listOfRounds.empty();
     var missionResults = this.gameModel.missionOutcomes;
     missionResults.forEach(function(value) {
         console.log(value);
@@ -80,3 +88,14 @@ function updateScoreboard() {
         }
     });
 }
+
+
+
+
+
+
+
+
+
+
+
